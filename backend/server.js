@@ -2,9 +2,13 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const { errorHandler } = require('./middleware/errorMiddleware');
+const connectDB = require('./connect/database');
+
 
 //variabel per porten
 const port = process.env.PORT || 5000;
+
+connectDB();
 
 //inicializimi i express.js
 const app = express()
