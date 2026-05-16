@@ -18,7 +18,8 @@ app.use(express.urlencoded({ extended: false }))
 
 //routes
 app.use('/api/tasks', require('./routes/taskRoutes'))
-app.use(errorHandler);
+app.use('/api/users', require('./routes/userRoutes'))
 
+app.use(errorHandler);
 //pritesi i requesteve
 app.listen(port, () => console.log(`Server is running on port ${port}`))
