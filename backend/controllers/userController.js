@@ -18,7 +18,7 @@ const registerUser = asyncHandler(async (req, res) => {
         res.status(400);
         throw new Error('User Exists')
     }
-    res.json({ message: 'Register User successful' })
+    
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -65,7 +65,8 @@ const loginUser = asyncHandler(async (req, res) => {
 
 
 const getCurrentUser = asyncHandler(async (req, res) => {
-    res.json({ message: 'Current User data' })
+    const {_id, name, email } = await User.findById(req.user.id)
+    res.status(200).json({ id: _id, name, email })
 })
 
 
